@@ -1,0 +1,49 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+//apply plugin: 'java'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.4.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	//데이터베이스
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
+
+	//부트스트랩
+	implementation 'org.webjars:bootstrap:3.3.5'
+
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.apache.commons:commons-lang3'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//implementation 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
+	implementation 'org.springframework.security:spring-security-test'
+
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
