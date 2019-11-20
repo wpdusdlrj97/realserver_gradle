@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -38,18 +39,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
     private UserDetailsService userDetailsService;
-	@Autowired
-    private PasswordEncoder passwordEncoder;
 
+	//@Autowired
+    //private PasswordEncoder passwordEncoder;
+
+	//인코더를 BCryptPasswordEncoder로 변환
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+
+	/*
+	 * 스프링 시큐리티가 사용자를 인증하는 방법이 담긴 객체.
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
 		auth.authenticationProvider(authenticationProvider());
 	}
 
+	/*
+	 * 스프링 시큐리티 룰을 무시하게 하는 Url 규칙.
+	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		
 		web.ignoring()
 		   .antMatchers("/css/**")
 		   .antMatchers("/vendor/**")
@@ -59,9 +72,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		;
 	}
 
+	/*
+	 * 스프링 시큐리티 룰.
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
 		http
 			.cors()
 			.and()
@@ -69,6 +84,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/login*/**").permitAll()
 			.antMatchers("/error**").permitAll()
 			.anyRequest().authenticated()
+		//로그아웃 관련 핸들러
+		//.and().logout()
+		//		.logoutUrl("/logout")
+		//		.logoutSuccessHandler(logoutSuccessHandler()
+				//HTTP 세션을 초기화하는 작업입니다.
+		//		.invalidateHttpSession(true)
 		.and().csrf()
 			  .disable()
 		.addFilter(authenticationFilter())
@@ -80,8 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		          
 		          PrintWriter writer = response.getWriter();
 		          writer.println(new AccessDeniedException("access denied !"));
-			  })
-		;
+			  });
 	}
 	
 	@Bean
@@ -100,7 +120,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsService);
-		authenticationProvider.setPasswordEncoder(passwordEncoder);
+		//authenticationProvider.setPasswordEncoder(passwordEncoder);
+		authenticationProvider.setPasswordEncoder(passwordEncoder());
 		
 		return authenticationProvider;
 	}
