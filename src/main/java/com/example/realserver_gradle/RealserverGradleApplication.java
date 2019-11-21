@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class RealserverGradleApplication implements CommandLineRunner
 {
+    //
 
     @Autowired
     private ResourceOwnerRepository repository;
