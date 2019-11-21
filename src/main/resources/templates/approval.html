@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body><h1>OAuth Approval 커스터마이징 페이지</h1>
+<p>Do you authorize <span th:text="${authorizationRequest.clientId}"> to access your protected resources?</p>
+<form id="confirmationForm" name="confirmationForm" action="/oauth/authorize" method="post">
+    <input name="user_oauth_approval" value="true" type="hidden"/>
+    <ul>
+        <li>
+            <div class="form-group">scope.read(권한 허용):
+                <input type="radio" name="scope.read" value="true">Approve</input>
+                <input type="radio" name="scope.read" value="false" checked>Deny</input>
+            </div>
+        </li>
+    </ul>
+    <label>
+        <input name="authorize" value="Authorize" type="submit"/>
+    </label>
+</form>
+</body>
+</html>
