@@ -121,6 +121,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsService);
 		//authenticationProvider.setPasswordEncoder(passwordEncoder);
+		//위에 있는 BCryptPasswordEncoder로 변환
+		//로그인시 입력한 패스워드가 BCryptPasswordEncoder로 변환되어서 DB에 있는 패스워드와 해시를 비교해서 인증한다
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
 		
 		return authenticationProvider;

@@ -58,7 +58,7 @@ public class ClientController {
 		
 		Client client = new Client();
 		client.addAdditionalInformation("name", clientDetails.getName());
-		client.setRegisteredRedirectUri(new HashSet<>(Arrays.asList("http://localhost:9000/callback")));
+		client.setRegisteredRedirectUri(new HashSet<>(Arrays.asList(clientDetails.getRedirectUri())));
 		client.setClientType(ClientType.PUBLIC);
 		client.setClientId(randomId);
 		client.setClientSecret(Crypto.sha256(randomSecret));
