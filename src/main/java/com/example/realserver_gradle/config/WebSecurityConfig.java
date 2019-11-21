@@ -38,14 +38,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //인코더를 BCryptPasswordEncoder로 변환
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    //@Bean
+    //public PasswordEncoder passwordEncoder() {
+    //    return new BCryptPasswordEncoder();
+    //}
 
 
     /*
@@ -126,7 +126,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //authenticationProvider.setPasswordEncoder(passwordEncoder);
         //위에 있는 BCryptPasswordEncoder로 변환
         //로그인시 입력한 패스워드가 BCryptPasswordEncoder로 변환되어서 DB에 있는 패스워드와 해시를 비교해서 인증한다
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setPasswordEncoder(passwordEncoder);
 
         return authenticationProvider;
     }
