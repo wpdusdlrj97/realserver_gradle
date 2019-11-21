@@ -64,6 +64,12 @@ public class ClientController {
 		client.setClientSecret(Crypto.sha256(randomSecret));
 		client.setAccessTokenValiditySeconds(3600);
 		client.setScope(Arrays.asList("read","write"));
+		// 자동으로 권한 승인이 필요없이 리다이렉트 시켜주는 페이지로
+		// FitMe 홈페이지만 해당되게 해놓는다다
+		// http://localhost:8080/oauth/authorize?client_id=FitMe_client_ID&redirect_uri=FitMe 메인홈페이지&response_type=code&scope=admin&state=xyz
+		//client.setScope(Arrays.asList("read","write","admin"));
+		//client.setAutoApproveScopes(Arrays.asList("admin"));
+
 		clientRegistrationService.addClientDetails(client);
 		
 		mav.setViewName("redirect:/client/dashboard");

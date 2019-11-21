@@ -1,6 +1,7 @@
 package com.example.realserver_gradle.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,6 +18,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		//로그인 후 oauth/authorize 전에 권한 승인을 요청받는 페이지로 이동
 		registry.addViewController("/oauth/confirm_access")
 				.setViewName("approval");
+
+
 
     }
 
