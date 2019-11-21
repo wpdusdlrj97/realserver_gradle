@@ -151,8 +151,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public AuthenticationSuccessHandler authenticationSuccessHandler() {
 		CustomAuthenticationSuccessHandler successHandler = new CustomAuthenticationSuccessHandler();
+		// localhost:8080으로 접속하면 로그인 페이지("http://localhost:8080/loginPage")로 리다이렉트되고
+		// 로그인 성공 시 시작하는 디폴트 경로
 		successHandler.setDefaultTargetUrl("/index");
-		
+		////만약 localhost:8080/pppp로 접속하면 일단 로그인 페이지로 이동해 로그인을 한 뒤에
+		////localhost:8080/pppp로 이동하는데 이때 pppp.html파일이 없다면 error.html이 출력된다
+
 		return successHandler;
 	}
 	
