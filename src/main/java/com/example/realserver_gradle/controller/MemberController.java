@@ -13,7 +13,7 @@ public class MemberController {
     // 로그아웃 결과 페이지
     @GetMapping("/logout/result")
     public String dispLogout() {
-        return "/logout";
+        return "logout";
     }
 
 
