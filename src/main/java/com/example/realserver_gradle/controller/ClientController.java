@@ -130,6 +130,7 @@ public class ClientController {
 		//client.setAutoApproveScopes(Arrays.asList("admin"));
 
 		clientRegistrationService.addClientDetails(client);
+		System.out.println("클라이언트"+client);
 
 
 		//mav.setViewName("redirect:/client/dashboard");
@@ -141,6 +142,7 @@ public class ClientController {
 		//여기가 get 방식으로 받아온 원인인듯
 		//mav.addObject("clientId", randomId);
 		//mav.addObject("clientSecret", randomSecret);
+		System.out.println("클라이언트 객체"+mav);
 
 		return mav;
 	}
