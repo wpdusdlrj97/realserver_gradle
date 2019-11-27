@@ -134,7 +134,7 @@ public class ClientController {
 
 
 		//mav.setViewName("redirect:/client/dashboard");
-		mav.setViewName("redirect:http://49.247.136.36/developer/after_register_app.html");
+		mav.setViewName("redirect:http://49.247.136.36/developer/after_register_app.php");
 
 
 		//mav.setViewName("redirect:http://49.247.136.36/fitme_developer.php");

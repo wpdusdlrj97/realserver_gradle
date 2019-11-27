@@ -28,9 +28,9 @@ public class RealserverGradleApplication implements CommandLineRunner
     public void run(String... args) throws Exception {
 
         ResourceOwner user = new ResourceOwner();
-        user.setId(4l);
-        user.setUsername("android_hong@naver.com");
-        user.setPassword(passwordEncoder.encode("password"));
+        user.setId(5l);
+        user.setUsername("yohan@gmail.com");
+        user.setPassword(passwordEncoder.encode("1234"));
         user.setRole(UserRole.ROLE_USER);
 
         repository.save(user);
