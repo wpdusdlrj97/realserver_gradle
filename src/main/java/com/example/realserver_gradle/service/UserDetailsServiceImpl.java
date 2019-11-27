@@ -37,8 +37,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 		
 		user.setAuthorities(AuthorityUtils.createAuthorityList(String.valueOf(user.getRole())));
-		
+
+		//MariaDB에 있는 user의 정보
+		System.out.println(user);
+		System.out.println(user.getId());
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
+
+
 		return user;
 	}
+
+
+
+
 
 }

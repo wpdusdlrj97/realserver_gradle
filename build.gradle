@@ -28,6 +28,10 @@ dependencies {
 	//부트스트랩
 	implementation 'org.webjars:bootstrap:3.3.5'
 
+	//font-awesome
+	implementation 'org.webjars:font-awesome:4.7.0'
+
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.apache.commons:commons-lang3'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

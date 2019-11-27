@@ -28,8 +28,8 @@ public class RealserverGradleApplication implements CommandLineRunner
     public void run(String... args) throws Exception {
 
         ResourceOwner user = new ResourceOwner();
-        user.setId(2l);
-        user.setUsername("zzxcho11@naver.com");
+        user.setId(4l);
+        user.setUsername("android_hong@naver.com");
         user.setPassword(passwordEncoder.encode("password"));
         user.setRole(UserRole.ROLE_USER);
 

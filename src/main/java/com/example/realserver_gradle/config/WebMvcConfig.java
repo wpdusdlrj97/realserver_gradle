@@ -20,7 +20,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.setViewName("approval");
 
 
-
     }
 
 }

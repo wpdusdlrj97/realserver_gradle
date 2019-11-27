@@ -9,4 +9,5 @@ public interface ResourceOwnerRepository extends JpaRepository<ResourceOwner, Lo
 
 	public ResourceOwner findByUsername(String username);
 
+
 }

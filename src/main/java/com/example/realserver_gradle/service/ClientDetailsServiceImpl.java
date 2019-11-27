@@ -21,7 +21,8 @@ import java.util.List;
 @Primary
 @Service
 public class ClientDetailsServiceImpl extends JdbcClientDetailsService {
-	
+
+	//실제 비지니스로직이 담기는 서비스 클래스이다. JdbcClientDetailsService를 상속하여 사용하였다.
 	public ClientDetailsServiceImpl(DataSource dataSource) {
 		super(dataSource);
 		// TODO Auto-generated constructor stub
@@ -64,4 +65,5 @@ public class ClientDetailsServiceImpl extends JdbcClientDetailsService {
 		log.info("ClientDetailsServiceImpl.listClientDetails :::: count = {}",list.size());
 		return list;
 	}
+
 }
