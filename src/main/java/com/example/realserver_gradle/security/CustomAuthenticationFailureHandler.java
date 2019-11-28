@@ -21,7 +21,15 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
 		log.info("CustomAuthenticationFailureHandler.onAuthenticationFailure ::::");
+
+		String username = request.getParameter("username");
+		String error1 = exception.getMessage();
+
+		System.out.println("요청받은 이름"+username);
+		System.out.println("에러 메시지1"+error1);
+
 		super.onAuthenticationFailure(request, response, exception);
+
 	}
 	
 	

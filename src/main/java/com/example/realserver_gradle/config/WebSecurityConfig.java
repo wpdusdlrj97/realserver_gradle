@@ -167,7 +167,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationFailureHandler authenticationFailureHandler() {
         CustomAuthenticationFailureHandler failureHandler = new CustomAuthenticationFailureHandler();
-        failureHandler.setDefaultFailureUrl("/loginPage?error=loginfali");
+        failureHandler.setDefaultFailureUrl("/loginPage?error=loginfail");
 
         return failureHandler;
     }
