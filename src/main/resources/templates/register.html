@@ -45,6 +45,11 @@
     <!-- Logo -->
     <div id="logo">
       <h1><a href="http://49.247.136.36/developer/index.php">FitMe Developers</a></h1>
+
+      <br>
+      <p><h1 style="color:#FFFFFF;  font-size: 1em; text-align:center;"><span th:text="${member}"></span>님</h1></p>
+      <button class="button style3" type="button"
+              onclick="javascript: window.location.href='http://49.247.136.36/fitme_logout.php'">로그아웃</button>
     </div>
 
 
@@ -52,13 +57,20 @@
     <nav id="nav">
       <ul>
         <li><a href="http://49.247.136.36/developer/index.php">Home</a></li>
-        <li><a href="http://49.247.136.36/developer/product.php">Product</a></li>
+        <li class="current"><a href="http://49.247.136.36/developer/product.php">Product</a>
+          <ul>
+            <li><a href="http://49.247.136.36/developer/product.php">FitMe API 소개</a></li>
+            <li><a href="http://49.247.136.36/developer/product_fitme.php">FitMe 아이디로 로그인</a></li>
+            <li><a href="http://49.247.136.36/developer/product_faq.php">FAQ</a></li>
+            <li><a href="http://49.247.136.36/developer/product_useinfo.php">이용약관</a></li>
+          </ul>
+        </li>
         <li><a href="http://49.247.136.36/developer/document.php">Documents</a></li>
-        <li class="current">
+        <li>
           <a href="http://49.247.136.36/developer/myapplication.php">Application</a>
           <ul>
             <li><a href="http://49.247.136.36/developer/myapplication.php">내 어플리케이션</a></li>
-            <li><a href="http://49.247.136.36/developer/register_app.php">어플리케이션 등록</a></li>
+            <li><a href="http://15.165.80.29/register">어플리케이션 등록</a></li>
             <li><a href="http://49.247.136.36/developer/demo.php">Demo</a></li>
           </ul>
         </li>

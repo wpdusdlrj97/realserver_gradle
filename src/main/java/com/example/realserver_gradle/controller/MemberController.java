@@ -30,9 +30,6 @@ public class MemberController {
 
 
 
-
-
-
     // 메인
     // 로그인한 사람의 주체를 불러와서 아이디 출력해주기
     @GetMapping("/")

@@ -11,6 +11,7 @@ import com.example.realserver_gradle.service.UserDetailsServiceImpl;
 import com.example.realserver_gradle.utils.Crypto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,11 +35,16 @@ public class ClientController {
     private ClientDetailsServiceImpl clientRegistrationService;
 
 	@GetMapping("/register")
-	public ModelAndView registerPage(ModelAndView mav) {
+	public ModelAndView registerPage(@AuthenticationPrincipal ResourceOwner user, ModelAndView mav) {
+
+		String username = user.getUsername();
+		System.out.println(username);
+
 
 
 		mav.setViewName("register");
 		mav.addObject("registry", new ClientDto());
+		mav.addObject("member", username);
 
 		return mav;
 	}
@@ -116,10 +122,11 @@ public class ClientController {
 		// 추가된 사항 - 암호화 전 클라이언트 시크릿 DB 기입
 		client.addAdditionalInformation("client_secret", randomSecret);
 		// 추가된 사항 - 정렬을 위한 현재 시간 DB 기입
-		client.setResourceIds(Arrays.asList(time1));
+		client.addAdditionalInformation("time", time1);
+		//client.setResourceIds(Arrays.asList(time1));
 
 
-
+		System.out.println("암호화전"+randomSecret);
 
 
 
