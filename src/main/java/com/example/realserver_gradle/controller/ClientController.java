@@ -75,6 +75,8 @@ public class ClientController {
 		client.setAccessTokenValiditySeconds(3600);
 		// 클라이언트 기능
 		client.setScope(Arrays.asList("read","write"));
+		// approve 화면 건너뛰기
+		//client.setAutoApproveScopes(Arrays.asList("read"));
 
 		// 추가된 사항 - 클라이언트를 등록한 유저이름 추가해주기 (현재 로그인한 사용자 정보)
 		client.addAdditionalInformation("resourceowner", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -101,6 +103,7 @@ public class ClientController {
 
 		//mav.setViewName("redirect:/client/dashboard");
 		mav.setViewName("redirect:http://49.247.136.36/developer/after_register_app.php");
+
 
 
 		//mav.setViewName("redirect:http://49.247.136.36/fitme_developer.php");
