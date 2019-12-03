@@ -5,16 +5,12 @@ import com.example.realserver_gradle.constrant.ClientType;
 import com.example.realserver_gradle.entity.Client;
 import com.example.realserver_gradle.entity.ClientDto;
 import com.example.realserver_gradle.entity.ResourceOwner;
-import com.example.realserver_gradle.repository.ResourceOwnerRepository;
 import com.example.realserver_gradle.service.ClientDetailsServiceImpl;
-import com.example.realserver_gradle.service.UserDetailsServiceImpl;
 import com.example.realserver_gradle.utils.Crypto;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -30,57 +26,15 @@ import java.util.UUID;
 
 @Controller
 public class ClientController {
-	
+
 	@Autowired
-    private ClientDetailsServiceImpl clientRegistrationService;
-
-	@GetMapping("/register")
-	public ModelAndView registerPage(@AuthenticationPrincipal ResourceOwner user, ModelAndView mav) {
-
-		String username = user.getUsername();
-		System.out.println(username);
+	private ClientDetailsServiceImpl clientRegistrationService;
 
 
-
-		mav.setViewName("register");
-		mav.addObject("registry", new ClientDto());
-		mav.addObject("member", username);
-
-		return mav;
-	}
-
-	//등록된 모든 앱 모아보기
-	@GetMapping("/dashboard")
-    public ModelAndView dashboard(ModelAndView mv) {
-
-		mv.addObject("applications", clientRegistrationService.listClientDetails());
-
-		mv.setViewName("dashboard");
-        return mv;
-    }
-
-    /*
-	@GetMapping("/dashboard")
-	public ModelAndView dashboard(@ModelAttribute("clientId")String clientId
-			, @ModelAttribute("clientSecret")String clientSecret
-			, ModelAndView mv) {
-		if(!StringUtils.isEmpty(clientId)) {
-			mv.addObject("applications",
-					clientRegistrationService.loadClientByClientId(clientId));
-			mv.addObject("client_secret", clientSecret);
-
-		}
-		mv.setViewName("client/dashboard");
-		return mv;
-	}
-
-     */
-
-
-	
 	@Transactional
 	@PostMapping("/save")
-	public ModelAndView save(@Valid ClientDto clientDetails, ModelAndView mav , BindingResult bindingResult) {
+	public ModelAndView save(@Valid ClientDto clientDetails, ModelAndView mav , BindingResult bindingResult, @RequestParam(value = "name")String name,
+							 @RequestParam(value = "redirectUri")String redirectUri) {
 
 		if(bindingResult.hasErrors()) {
 			return new ModelAndView("register");
@@ -88,6 +42,11 @@ public class ClientController {
 		String randomId = UUID.randomUUID().toString();
 		String randomSecret = UUID.randomUUID().toString();
 
+
+		//http://49.247.136.36/developer/register_app.html로부터 받아온 클라이언트 name
+		System.out.println(name);
+		//http://49.247.136.36/developer/register_app.html로부터 받아온 redirect uri
+		System.out.println(redirectUri);
 
 		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
@@ -154,17 +113,4 @@ public class ClientController {
 		return mav;
 	}
 
-	@GetMapping("/remove")
-    public ModelAndView remove(
-            @RequestParam(value = "client_id", required = false) String clientId) {
-
-        clientRegistrationService.removeClientDetails(clientId);
-
-        //ModelAndView mv = new ModelAndView("redirect:/client/dashboard");
-		ModelAndView mv = new ModelAndView("redirect:dashboard");
-
-        mv.addObject("applications",
-                clientRegistrationService.listClientDetails());
-        return mv;
-    }
 }

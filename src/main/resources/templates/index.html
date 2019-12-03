@@ -7,11 +7,11 @@
 <body>
 <h1>핏미 메인 페이지</h1>
 <!--원래는 핏미 홈페이지로 리다이렉트 시키지만 현재는 핏미 홈페이지가 없으므로 네이버 메인 페이지로 리다이렉트 시킨다-->
-<!--<meta http-equiv="refresh" content="0;URL='https://www.naver.com/'"> -->
+<meta http-equiv="refresh" content="0;URL='http://49.247.136.36/fitme_index.php'">
 
-<span th:text="${member}">status</span>
+<!--<span th:text="${member}">status</span>-->
 
-<a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃?</a>
+<!--<a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃?</a>-->
 <hr>
 </body>
 </html>
