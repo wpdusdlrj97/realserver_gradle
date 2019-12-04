@@ -23,10 +23,14 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 		log.info("CustomAuthenticationFailureHandler.onAuthenticationFailure ::::");
 
 		String username = request.getParameter("username");
-		String error1 = exception.getMessage();
+		String errormsg = exception.getMessage();
+
+		request.setAttribute("username", username);
+		request.setAttribute("errormsg", errormsg);
 
 		System.out.println("요청받은 이름"+username);
-		System.out.println("에러 메시지1"+error1);
+		System.out.println("요청받은 비밀번호"+username);
+		System.out.println("에러 메시지"+errormsg);
 
 		super.onAuthenticationFailure(request, response, exception);
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body><h1>OAuth Approval 커스터마이징 페이지</h1>
-<p>Do you authorize <span th:text="${authorizationRequest.clientId}"> to access your protected resources?</p>
+<p>Do you authorize <span th:text="${authorizationRequest.clientId}"></span> to access your protected resources?</p>
 <form id="confirmationForm" name="confirmationForm" action="/oauth/authorize" method="post">
     <input name="user_oauth_approval" value="true" type="hidden"/>
     <ul>
