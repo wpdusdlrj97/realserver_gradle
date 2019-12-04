@@ -155,6 +155,9 @@
 
         <div class="card card-container">
             <a href ="http://49.247.136.36/main/main.php"><h1 style="color:#FF6F61; font-weight: bold; font-size: 3.5em; text-align:center;">FitMe</h1></a>
+            <div th:if="${param.error}" class="alert alert-danger">
+                <span style="color:red">*가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.*</span>
+            </div>
             <p id="profile-name" class="profile-name-card"></p>
             <form method="post" action="login" class="form-signin" name="loginForm">
                 <span id="reauth-email" class="reauth-email"></span>
@@ -163,9 +166,6 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"><h1 style="color:#FFFFFF; font-weight: bold; font-size: 1em; text-align:center; ">로그인</h1></button>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="location.href='http://49.247.136.36/register_member.php'"><h1 style="color:#FFFFFF; font-weight: bold; font-size: 1em; text-align:center; ">회원가입</h1></button>
             </form><!-- /form -->
-            <div th:if="${param.error}" class="alert alert-danger">
-                <span style="color:red">아이디나 비밀번호가 올바르지 않습니다.</span>
-            </div>
         </div><!-- /card-container -->
     </div>
 
