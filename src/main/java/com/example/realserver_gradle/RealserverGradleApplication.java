@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class RealserverGradleApplication implements CommandLineRunner
+public class RealserverGradleApplication
 {
     //
 
@@ -24,17 +24,5 @@ public class RealserverGradleApplication implements CommandLineRunner
     }
 
 
-    @Override
-    public void run(String... args) throws Exception {
-
-        ResourceOwner user = new ResourceOwner();
-        user.setId(5l);
-        user.setUsername("yohan@gmail.com");
-        user.setPassword(passwordEncoder.encode("1234"));
-        user.setRole(UserRole.ROLE_USER);
-
-        repository.save(user);
-
-    }
 
 }
