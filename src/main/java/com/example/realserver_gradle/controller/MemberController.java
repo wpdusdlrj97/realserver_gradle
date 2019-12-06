@@ -29,11 +29,25 @@ public class MemberController {
     }
 
 
-
     // 메인
     // 로그인한 사람의 주체를 불러와서 아이디 출력해주기
     @GetMapping("/")
     public ModelAndView index(@AuthenticationPrincipal ResourceOwner user, ModelAndView mv) {
+
+        String username = user.getUsername();
+
+        System.out.println(username);
+
+        mv.addObject("member", username);
+
+        mv.setViewName("index");
+        return mv;
+    }
+
+    // 메인
+    // 인덱스로 리다이렉트
+    @GetMapping("/index")
+    public ModelAndView index2(@AuthenticationPrincipal ResourceOwner user, ModelAndView mv) {
 
         String username = user.getUsername();
 
