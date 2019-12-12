@@ -12,12 +12,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
@@ -56,14 +54,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 
+
 		/*
 		try {
 			sendPost(user.getUsername());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		 */
+
 
 
 
@@ -71,7 +71,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 
+
 	/*
+
 	private void sendPost(String getemail) throws Exception {
 		URL url = new URL("http://49.247.136.36/fitme_session.php"); // 호출할 url
 		Map<String,Object> params = new LinkedHashMap<>(); // 파라미터 세팅
@@ -106,9 +108,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 		in.close();
 	}
+	*/
 
 
-	 */
+
+
 
 
 
